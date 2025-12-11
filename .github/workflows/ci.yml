@@ -14,16 +14,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
-
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
           version: 10.0.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install
@@ -35,9 +35,9 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: Run Cypress tests
-        run: pnpm test:ci
+        run: pnpm test
         env:
-          CYPRESS_VERIFY_TIMEOUT: 100000
+          CI: true
 
       - name: Upload Cypress Videos
         if: always()
@@ -52,6 +52,5 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots/
-
 
 
