@@ -1,6 +1,5 @@
 # Dependências
 node_modules/
-pnpm-lock.yaml
 
 # Artefatos do Cypress
 cypress/videos/
