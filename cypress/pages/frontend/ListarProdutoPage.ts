@@ -4,12 +4,7 @@ export class ListarProdutoPage {
   };
 
   validarCarregamento() {
-    cy.intercept('GET', '**/produtos').as('getProdutos');
-
-    cy.wait('@getProdutos', { timeout: 15000 });
-
-    this.elements
-      .linhas()
+    cy.get('table tbody tr', { timeout: 15000 })
       .should('have.length.greaterThan', 0);
   }
 }
