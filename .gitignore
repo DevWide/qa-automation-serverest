@@ -1,0 +1,40 @@
+# Dependências
+node_modules/
+pnpm-lock.yaml
+
+# Artefatos do Cypress
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# Resultados de execução
+reports/
+coverage/
+
+# Cache do Cypress
+.cypress-cache/
+.cache/
+dist/
+tmp/
+temp/
+
+# Configurações locais
+.env
+.env.local
+.env.development
+.env.test
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
