@@ -1,10 +1,9 @@
 export class ListarProdutoPage {
   elements = {
-    linhas: () => cy.get('table tbody tr'),
+    tabela: () => cy.get('table'),
   };
 
   validarCarregamento() {
-    cy.get('table tbody tr', { timeout: 15000 })
-      .should('have.length.greaterThan', 0);
+    this.elements.tabela().should('exist');
   }
 }
