@@ -1,9 +1,9 @@
-import { ListarProdutosPage } from '../../pages/frontend/ListarProdutoPage';
+import { ListarProdutoPage } from '../../pages/frontend/ListarProdutoPage';
 import { LoginPage } from '../../pages/frontend/LoginPage';
 import { DataGenerator } from '../../utils/dataGenerator';
 
 describe('Listagem de Produtos com usuário dinâmico', () => {
-  const listar = new ListarProdutosPage();
+  const listar = new ListarProdutoPage();
   const login = new LoginPage();
 
   const user = {
@@ -28,5 +28,7 @@ describe('Listagem de Produtos com usuário dinâmico', () => {
     listar.validarCarregamento();
   });
 });
+
+
 
 

@@ -1,23 +1,15 @@
-export class ListarProdutosPage {
+export class ListarProdutoPage {
   elements = {
     linhas: () => cy.get('table tbody tr'),
   };
 
   validarCarregamento() {
-    this.elements.linhas().should('have.length.greaterThan', 0);
-  }
-}
+    cy.intercept('GET', '**/produtos').as('getProdutos');
 
-export class ListarProdutoPage {
-  elements = {
-    linhas: () => cy.get('table tbody tr'),
-    firstEditButton: () =>
-      cy.get('table tbody tr').first().find('button.btn-info'),
-    firstDeleteButton: () =>
-      cy.get('table tbody tr').first().find('button.btn-danger'),
-  };
+    cy.wait('@getProdutos', { timeout: 15000 });
 
-  validarLista() {
-    this.elements.linhas().should('have.length.greaterThan', 0);
+    this.elements
+      .linhas()
+      .should('have.length.greaterThan', 0);
   }
 }
