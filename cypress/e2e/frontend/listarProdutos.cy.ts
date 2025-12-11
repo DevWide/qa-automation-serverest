@@ -23,11 +23,23 @@ describe('Listagem de Produtos com usuário dinâmico', () => {
     cy.visit('/login');
     login.logar(user.email, user.password);
 
+    cy.fixture('produtos').then((mock) => {
+      cy.intercept('GET', '**/produtos', {
+        statusCode: 200,
+        body: {
+          quantidade: mock.length,
+          produtos: mock,
+        },
+      }).as('mockProdutos');
+    });
+
     cy.visit('/admin/listarprodutos');
+    cy.wait('@mockProdutos');
 
     listar.validarCarregamento();
   });
 });
+
 
 
 
